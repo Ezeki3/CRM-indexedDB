@@ -6,7 +6,7 @@
     crearDB();
   });
 
-  // crea la base de datos
+  // crea la base de datos de IndexDB
   function crearDB() {
     const crearDB = window.indexedDB.open('crm', 1);
 
@@ -25,7 +25,7 @@
 
       objectStore.createIndex('nombre', 'nombre', { unique: false });
       objectStore.createIndex('email', 'email', { unique: true });
-      objectStore.createIndex('telfono', 'telfono', { unique: false });
+      objectStore.createIndex('telefono', 'telefono', { unique: false });
       objectStore.createIndex('empresa', 'empresa', { unique: false });
       objectStore.createIndex('id', 'id', { unique: true });
 
@@ -33,4 +33,6 @@
 
     }
   }
-})
+
+
+})();
