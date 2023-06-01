@@ -41,8 +41,9 @@
   function imprimirAlerta(mensaje, tipo){
 
     const alerta = document.querySelector('.alerta');
-
+    console.log(alerta);
     if (!alerta) {
+      
       // crear la alerta
       const divMensaje = document.createElement('div');
       divMensaje.classList.add('px-4', 'py-3', 'rounded', 'max-w-lg', 'mx-auto', 'mt-6', 'text-center', 'border', 'alerta');
