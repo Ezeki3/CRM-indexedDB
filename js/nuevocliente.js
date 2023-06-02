@@ -64,13 +64,17 @@
     transaction.oncomplete = function(){
       console.log('cliente agregado');
       imprimirAlerta('El cliente se agrego correctamente')
+
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 3000);
     }
   }
 
   function imprimirAlerta(mensaje, tipo){
 
     const alerta = document.querySelector('.alerta');
-    
+
     if (!alerta) {
       
       // crear la alerta
