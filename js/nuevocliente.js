@@ -36,6 +36,33 @@
       return;
     }
 
+    // Crear un objeto con la informacion
+    const cliente = {
+      // Como la llave y el valor tienen el mismo nombre y se puede omitir uno: nombre: nombre
+      nombre,
+      email,
+      telefono,
+      empresa,
+      id: Date.now()
+    }
+    
+    crearNuevoCliente(cliente);
+  }
+
+  function crearNuevoCliente(cliente){
+    const transaction = DB.transaction(['crm'], 'readwrite');
+
+    const objectStore = transaction.objectStore('crm');
+
+    objectStore.add(cliente);
+
+    transaction.onerror = function(){
+      console.log('Hubo un error');
+    };
+
+    transaction.oncomplete = function(){
+      console.log('cliente agregado');
+    }
   }
 
   function imprimirAlerta(mensaje, tipo){
