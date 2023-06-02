@@ -58,10 +58,12 @@
 
     transaction.onerror = function(){
       console.log('Hubo un error');
+      imprimirAlerta('El email tiene que ser unico', 'error')
     };
 
     transaction.oncomplete = function(){
       console.log('cliente agregado');
+      imprimirAlerta('El cliente se agrego correctamente')
     }
   }
 
