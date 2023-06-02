@@ -5,7 +5,7 @@
   document.addEventListener('DOMContentLoaded', () => {
     crearDB();
 
-    if (window.location.open('crm', 1)) {
+    if (window.indexedDB.open('crm', 1)) {
       obtenerClientes();
     }
 
@@ -52,6 +52,13 @@
 
       objectStore.openCursor().onsuccess = function(e){
         const cursor = e.target.result;
+
+        if (cursor) {
+          console.log(cursor.value);
+          cursor.continue();
+        } else {
+          console.log('No hay mas registros..');
+        }
       }
     }
   }
