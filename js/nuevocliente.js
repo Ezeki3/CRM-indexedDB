@@ -57,7 +57,7 @@
     objectStore.add(cliente);
 
     transaction.onerror = function(){
-      console.log('Hubo un error');
+
       imprimirAlerta('El email tiene que ser unico', 'error')
     };
 
@@ -70,7 +70,7 @@
   function imprimirAlerta(mensaje, tipo){
 
     const alerta = document.querySelector('.alerta');
-    console.log(alerta);
+    
     if (!alerta) {
       
       // crear la alerta
