@@ -1,6 +1,11 @@
 (function () {
   let DB;
 
+  const nombreInput = document.querySelector('#nombre');
+  const emailInput = document.querySelector('#email');
+  const telefonoInput = document.querySelector('#telefono');
+  const empresaInput = document.querySelector('#empresa');
+
   document.addEventListener('DOMContentLoaded', () => {
     conectarDB();
 
@@ -28,12 +33,18 @@
 
         // nos trae la info del cliente
         if (cursor.value.id === Number(id)) {
-          console.log(cursor.value);
+          llenarFormulario(cursor.value);
         }
         cursor.continue();
       }
     }
 
+  }
+
+  function llenarFormulario(datosCliente) {
+    const { nombre } = datosCliente;
+
+    nombreInput.value = nombre;
   }
 
   function conectarDB() {
