@@ -58,7 +58,6 @@
           const { nombre, empresa, email, telefono, id } = cursor.value;
 
           const listadoClientes = document.querySelector('#listado-clientes');
-          console.log(listadoClientes);
 
           listadoClientes.innerHTML += `
           <tr>
