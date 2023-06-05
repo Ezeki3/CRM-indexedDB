@@ -19,7 +19,21 @@
   function obtenerCliente(id) {
     const transaction = DB.transaction(['crm'], 'readwrite');
     const objectStore = transaction.objectStore('crm');
-    console.log(objectStore);
+
+    const cliente = objectStore.openCursor();
+    cliente.onsuccess = function (e) {
+      const cursor = e.target.result;
+
+      if (cursor) {
+
+        // nos trae la info del cliente
+        if (cursor.value.id === Number(id)) {
+          console.log(cursor.value);
+        }
+        cursor.continue();
+      }
+    }
+
   }
 
   function conectarDB() {
