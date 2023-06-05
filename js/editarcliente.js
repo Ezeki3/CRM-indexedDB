@@ -8,13 +8,18 @@
     const parametrosURL = new URLSearchParams(window.location.search);
     const idCliente = parametrosURL.get('id');
     if (idCliente) {
-      obtenerCliente(idCliente);
+      // para que le demos tiempo a buscar la DB o usar programacion asincrona
+      setTimeout(() => {
+        obtenerCliente(idCliente);
+      }, 1000);
     }
 
   });
 
   function obtenerCliente(id) {
-    console.log(id);
+    const transaction = DB.transaction(['crm'], 'readwrite');
+    const objectStore = transaction.objectStore('crm');
+    console.log(objectStore);
   }
 
   function conectarDB() {
