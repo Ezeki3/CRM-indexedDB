@@ -1,5 +1,6 @@
 (function () {
   let DB;
+  let idCliente;
 
   const nombreInput = document.querySelector('#nombre');
   const emailInput = document.querySelector('#email');
@@ -17,7 +18,7 @@
 
     // Verificar el ID de la URL
     const parametrosURL = new URLSearchParams(window.location.search);
-    const idCliente = parametrosURL.get('id');
+    idCliente = parametrosURL.get('id');
     if (idCliente) {
       // para que le demos tiempo a buscar la DB o usar programacion asincrona
       setTimeout(() => {
@@ -34,6 +35,16 @@
       imprimirAlerta('Todos los camos son obligatorios', 'error');
       return;
     }
+
+    // Actualizar cliente
+    const clienteActualizado = {
+      nombre: nombreInput.value,
+      email: emailInput.value,
+      telefono: telefonoInput.value,
+      empresa: empresaInput.value,
+      id: Number(idCliente)
+    }
+    console.log(clienteActualizado);
 
   }
 
