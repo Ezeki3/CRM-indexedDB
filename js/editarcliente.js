@@ -51,7 +51,11 @@
     objectStore.put(clienteActualizado);
 
     transaction.oncomplete = function(){
-      console.log('editado correctamente');
+      imprimirAlerta('Editado correctamente');
+
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 3000);
     }
 
     transaction.onerror = function(){
