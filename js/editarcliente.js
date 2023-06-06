@@ -65,7 +65,17 @@
     empresaInput.value = empresa;
   }
 
-  
+  function conectarDB() {
+    const abrirConexion = window.indexedDB.open('crm', 1)
+ 
+    abrirConexion.onerror = function () {
+      console.log('No se pudo crear la base de datos')
+    }
+ 
+    abrirConexion.onsuccess = function () {
+      DB = abrirConexion.result
+    }
+  }
 
 
 })();
