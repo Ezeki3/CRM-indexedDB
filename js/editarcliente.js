@@ -31,14 +31,14 @@
     e.preventDefault();
 
     if (nombreInput.value === '' || emailInput.value === '' || telefonoInput.value === '' || empresaInput.value === '') {
-      console.log('error');
+      imprimirAlerta('Todos los camos son obligatorios', 'error');
       return;
     }
 
   }
 
   function obtenerCliente(id) {
-    const transaction = DB.transaction(['crm'], 'readwrite');
+    const transaction = DB.transaction(['crm'], 'readonly');
     const objectStore = transaction.objectStore('crm');
 
     const cliente = objectStore.openCursor();
@@ -54,7 +54,6 @@
         cursor.continue();
       }
     }
-
   }
 
   function llenarFormulario(datosCliente) {
@@ -66,18 +65,7 @@
     empresaInput.value = empresa;
   }
 
-  function conectarDB() {
-    const abrirConexion = window.indexedDB.open('crm', 1);
-
-    abrirConexion.onerror = function () {
-      console.log('Error al abrir la conexión a la base de datos');
-    };
-
-    abrirConexion.onsuccess = function () {
-      DB = abrirConexion.result;
-    }
-
-  }
+  
 
 
 })();
