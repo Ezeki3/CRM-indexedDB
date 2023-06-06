@@ -44,7 +44,19 @@
       empresa: empresaInput.value,
       id: Number(idCliente)
     }
-    console.log(clienteActualizado);
+    
+    const transaction = DB.transaction(['crm'], 'readwrite');
+    const objectStore = transaction.objectStore('crm');
+
+    objectStore.put(clienteActualizado);
+
+    transaction.oncomplete = function(){
+      console.log('editado correctamente');
+    }
+
+    transaction.onerror = function(){
+      imprimirAlerta('Hubo un error', 'error');
+    }
 
   }
 
