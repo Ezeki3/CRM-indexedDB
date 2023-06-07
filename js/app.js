@@ -1,6 +1,8 @@
 (function () {
 
   let DB;
+  const listadoClientes = document.querySelector('#listado-clientes');
+
 
   document.addEventListener('DOMContentLoaded', () => {
     crearDB();
@@ -9,6 +11,7 @@
       obtenerClientes();
     }
 
+    listadoClientes.addEventListener('click', eliminarRegistro);
   });
 
   // crea la base de datos de IndexDB
@@ -56,8 +59,6 @@
         if (cursor) {
 
           const { nombre, empresa, email, telefono, id } = cursor.value;
-
-          const listadoClientes = document.querySelector('#listado-clientes');
 
           listadoClientes.innerHTML += `
           <tr>
