@@ -14,11 +14,29 @@
     listadoClientes.addEventListener('click', eliminarRegistro);
   });
 
-  function eliminarRegistro(e){
+  function eliminarRegistro(e) {
     if (e.target.classList.contains('eliminar')) {
-      console.log('diste click en eliminar');
+      const idEliminar = Number(e.target.dataset.cliente); //accedemos al id del cliente
+
+      const confirmar = confirm('Deseas eliminar este cliente?');
+
+      if (confirmar) {
+        const transaction = DB.transaction(['crm'], 'readwrite');
+        const objectStore = transaction.objectStore('crm');
+
+        objectStore.delete(idEliminar);
+
+        transaction.oncomplete = function () {
+          console.log('Eliminado..');
+        }
+
+        transaction.onerror = function () {
+          console.log('Error al eliminar cliente..');
+        }
+      }
     }
   }
+
 
   // crea la base de datos de IndexDB
   function crearDB() {
