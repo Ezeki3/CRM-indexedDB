@@ -14,6 +14,12 @@
     listadoClientes.addEventListener('click', eliminarRegistro);
   });
 
+  function eliminarRegistro(e){
+    if (e.target.classList.contains('eliminar')) {
+      console.log('diste click en eliminar');
+    }
+  }
+
   // crea la base de datos de IndexDB
   function crearDB() {
     const crearDB = window.indexedDB.open('crm', 1);
@@ -74,7 +80,7 @@
             </td>
             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5">
               <a href="editar-cliente.html?id=${id}" class="text-teal-600 hover:text-teal-900 mr-5">Editar</a>
-              <a href="#" data-cliente="${id}" class="text-red-600 hover:text-red-900">Eliminar</a>
+              <a href="#" data-cliente="${id}" class="text-red-600 hover:text-red-900 eliminar">Eliminar</a>
             </td>
           </tr>
           `;
