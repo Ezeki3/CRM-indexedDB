@@ -28,6 +28,9 @@
 
         transaction.oncomplete = function () {
           console.log('Eliminado..');
+
+          // Para elimnar el registro del DOM
+          e.target.parentElement.parentElement.remove();
         }
 
         transaction.onerror = function () {
